@@ -5,6 +5,8 @@ Authorize.Net
 `Authorize.Net <https://www.authorize.net>`_ is a United States-based online payment solution
 provider, allowing businesses to accept **credit cards**.
 
+.. _authorize-configuration:
+
 Configuration
 =============
 
@@ -167,3 +169,82 @@ To import the data into Odoo:
 
 .. tip::
    List of `eCheck.Net return codes <https://support.authorize.net/knowledgebase/Knowledgearticle/?code=000001293>`_
+
+Express Checkout with Authorize.Net
+==========================================
+
+Express checkout allows customers to pay for their products in a single click. Odoo supports Apple
+Pay as an express checkout method through Authorize.Net.
+
+Prerequisites
+-------------
+
+Before enabling Apple Pay in Odoo, you must register as an Apple Pay merchant. To do this:
+
+- Enroll in the `Apple Developer Program <https://developer.apple.com/support/app-account>`_.
+- In your developer account, navigate to the `merchant identifier list <https://developer.apple.com/account/resources/identifiers/list/merchant>`_
+  and click the plus to create a new identifier.
+- Select :guilabel:`Merchant IDs` and click :guilabel:`Continue`.
+- Enter a short description and identifier. Click :guilabel:`Continue` followed by :guilabel:`Register`.
+- Open the merchant configuration page by clicking on the newly created identifier.
+- Under :guilabel:`Apple Pay Payment Processing Certificate`, click :guilabel:`Create Certificate`.
+- If a question appears, answer it and click :guilabel:`Continue`.
+- In a new browser window, log in to Authorize.Net. Then, go to :menuselection:`Account --> Digital Payment Solutions --> Sign Up`
+  for Apple Pay. Enter the Apple Merchant ID generated previously and then click :guilabel:`Download`.
+- Upload the Certificate Signing Request (CSR) downloaded in the previous step to Apple. Click :guilabel:`Continue`.
+- Navigate back to the merchant identifier configuration page. Under :guilabel:`Apple Pay Merchant Identity Certificate`,
+  click :guilabel:`Create Certificate`.
+- Generate a merchant identity CSR.
+
+  .. tabs::
+
+    .. tab:: macOS
+
+      Open :guilabel:`Keychain Access`. Then, do the following:
+
+        - Navigate to :menuselection:`Keychain Access --> Certificate Assistant --> Request a Certificate From a Certificate Authority...`.
+        - Enter your email address and the common name :guilabel:`merchant`. Select :guilabel:`Save to disk` and then click :guilabel:`Continue`.
+
+      This file is the CSR that will be uploaded to Apple. In addition, you need to download your private key by doing the following:
+
+        - Back in keychain, locate the private key :guilabel:`merchant`. Right click on the key and click :guilabel:`Export "merchant"...`.
+        - Make sure to select the file format `.p12` and then click :guilabel:`Save`.
+
+    .. tab:: Linux
+
+      Run the following command:
+        
+      .. code-block:: console
+
+        $ openssl req -new -newkey rsa:2048 -nodes -keyout merchant.p12 -out CertificateSigningRequest.certSigningRequest
+
+- Upload the merchant identity CSR :file:`CertificateSigningRequest.certSigningRequest` to Apple. Click :guilabel:`Continue`,
+  and then click :guilabel:`Download`.
+- Navigate back to the merchant identifier configuration page. Under :guilabel:`Merchant Domains`, click :guilabel:`Add Domain`.
+- Enter the domain for your Odoo website and then click :guilable:`Save`.
+- Download the domain verification file by clicking :guilabel:`Download`.
+
+For more information, see `Apple's official documentation <https://developer.apple.com/help/account/configure-app-capabilities/configure-apple-pay-on-the-web/>`_.
+
+Enable Apple Pay with Authorize.Net
+-----------------------------------
+
+To enable Apple Pay with Authorize.Net:
+
+- :ref:`Configure Authorize.Net <authorize-configuration>`.
+- Install the `express_payment_authorize_apple` Odoo module.
+- Open the Odoo configuration page for Authorize.Net.
+- Enter your Apple Pay merchant ID in the field :guilabel:`Merchant ID`.
+- Upload the domain verification file :file:`apple-developer-merchantid-domain-association.txt`.
+- Upload the merchant identity certificate :file:`merchant_id.cer`.
+- Upload the merchant identity key :file:`merchant.p12`.
+- Back in your Apple Developer Account, click the :guilabel:`Verify` button on the domain
+  verification page.
+
+At this point, the Apple Pay express checkout option will appear in the eCommerce cart.
+
+Disable Apple Pay with Authorize.Net
+-----------------------------------
+
+To disable Apple Pay with Authorize.Net, simply uninstall the `express_payment_authorize_apple`
+Odoo module.
