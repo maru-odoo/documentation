@@ -1,6 +1,3 @@
-Prerequisites
--------------
-
 Before enabling Apple Pay in Odoo, you must register as an Apple Pay merchant. To do this:
 
 - Enroll in the `Apple Developer Program <https://developer.apple.com/support/app-account>`_.
@@ -18,9 +15,8 @@ Before enabling Apple Pay in Odoo, you must register as an Apple Pay merchant. T
 - Under :guilabel:`Apple Pay Payment Processing Certificate`, click :guilabel:`Create Certificate`.
 - If a question appears, answer it and click :guilabel:`Continue`.
 - |payment-processing-csr|
-- Upload the Certificate Signing Request (CSR) downloaded in the previous step to Apple. Click :guilabel:`Continue`.
-- Navigate back to the merchant identifier configuration page. Under :guilabel:`Apple Pay Merchant Identity Certificate`,
-  click :guilabel:`Create Certificate`.
+- Navigate back to the merchant identifier configuration page in your Apple developer account.
+  Under :guilabel:`Apple Pay Merchant Identity Certificate`, click :guilabel:`Create Certificate`.
 - Generate a merchant identity CSR.
 
   .. tabs::

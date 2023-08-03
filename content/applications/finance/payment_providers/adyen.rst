@@ -13,6 +13,8 @@ possibilities.
    Adyen works only with customers processing **more** than **10 million annually** or invoicing a
    **minimum** of **1.000** transactions **per month**.
 
+.. _adyen-configuration:
+
 Configuration
 =============
 
@@ -161,3 +163,52 @@ Then, open your Adyen Merchant Account, go to :menuselection:`Account --> Settin
 
 .. seealso::
    :doc:`../payment_providers`
+
+Express Checkout with Adyen
+===========================
+
+Express checkout allows customers to pay for their products in a single click. Odoo supports Apple
+Pay and Google Pay as express checkout methods through Adyen.
+
+Enable Apple Pay with Adyen
+---------------------------
+
+To enable Apple Pay with Adyen, you must first complete the prerequisites below. After meeting the prerequisites,
+see the section :ref:`steps <adyen-apple-steps>`.
+
+Prerequisites
+-------------
+
+.. |payment-processing-csr| replace::
+  In a new browser window, log in to Adyen. Then, go to :menuselection:`Developers --> API credentials`,
+  select your Adyen web service account, and scroll down to :guilabel:`Wallet payment methods`. Add a new
+  :guilabel:`Apple Pay Certificate`, selecting :guilabel:`Use your own certificate`. Follow the prompts and
+  then click :guilabel:`Download CSR`. Upload the CSR to Apple, download the certificate from Apple by clicking
+  :guilabel:`Download`, and upload this certificate to Adyen.
+
+.. include:: apple_pre.rst
+
+.. _adyen-apple-steps:
+
+Steps
+-----
+
+Now, in Odoo:
+
+- :ref:`Configure Adyen <adyen-configuration>`.
+- Install the `express_payment_adyen_apple` Odoo module.
+- Open the Odoo configuration page for Adyen.
+- Enter your Apple Pay merchant ID in the field :guilabel:`Merchant ID`.
+- Upload the domain verification file :file:`apple-developer-merchantid-domain-association.txt`.
+- Upload the merchant identity certificate :file:`merchant_id.cer`.
+- Upload the merchant identity key :file:`merchant.p12`.
+- Back in your Apple Developer Account, click the :guilabel:`Verify` button on the domain
+  verification page.
+
+At this point, the Apple Pay express checkout option will appear in the eCommerce cart.
+
+Disable Apple Pay with Adyen
+----------------------------
+
+To disable Apple Pay with Adyen, simply uninstall the `express_payment_adyen_apple`
+Odoo module.
