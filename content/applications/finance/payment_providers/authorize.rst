@@ -205,9 +205,9 @@ Before enabling Apple Pay in Odoo, you must register as an Apple Pay merchant. T
         - Navigate to :menuselection:`Keychain Access --> Certificate Assistant --> Request a Certificate From a Certificate Authority...`.
         - Enter your email address and the common name :guilabel:`merchant`. Select :guilabel:`Save to disk` and then click :guilabel:`Continue`.
 
-      This file is the CSR that will be uploaded to Apple. In addition, you need to download your private key by doing the following:
+      This file is the CSR that will be uploaded to Apple. You will also need to download your private key by doing the following:
 
-        - Back in keychain, locate the private key :guilabel:`merchant`. Right click on the key and click :guilabel:`Export "merchant"...`.
+        - Back in :guilabel:`Keychain Access`, locate the private key :guilabel:`merchant`. Right click on the key and click :guilabel:`Export "merchant"...`.
         - Make sure to select the file format `.p12` and then click :guilabel:`Save`.
 
     .. tab:: Linux
@@ -217,6 +217,8 @@ Before enabling Apple Pay in Odoo, you must register as an Apple Pay merchant. T
       .. code-block:: console
 
         $ openssl req -new -newkey rsa:2048 -nodes -keyout merchant.p12 -out CertificateSigningRequest.certSigningRequest
+
+      If prompted, do not enter a password.
 
 - Upload the merchant identity CSR :file:`CertificateSigningRequest.certSigningRequest` to Apple. Click :guilabel:`Continue`,
   and then click :guilabel:`Download`.
