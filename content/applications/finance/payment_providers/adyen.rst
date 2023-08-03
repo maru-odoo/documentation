@@ -173,8 +173,8 @@ Pay and Google Pay as express checkout methods through Adyen.
 Apple Pay with Adyen
 --------------------
 
-To enable Apple Pay with Adyen, you must first complete the prerequisites below. After meeting the prerequisites,
-see the :ref:`Odoo setup steps <adyen-apple-steps>`.
+To enable Apple Pay with Adyen, you must first complete the prerequisites below.
+After meeting the prerequisites, see the :ref:`Odoo setup steps <adyen-apple-steps>`.
 
 Prerequisites
 ~~~~~~~~~~~~~
@@ -205,9 +205,9 @@ Now, in Odoo:
 - Back in your Apple Developer Account, click the :guilabel:`Verify` button on the domain
   verification page.
 
-At this point, the Apple Pay express checkout option will appear in the eCommerce cart.
+At this point, the Apple Pay button will appear in the eCommerce cart.
 
-.. warning::
+.. important::
    If you are running Adyen in test mode, you must use `Apple Pay test cards <https://developer.apple.com/apple-pay/sandbox-testing>`_.
    Adyen will reject Apple Pay payments made from real credit cards when running in test mode.
 
@@ -215,4 +215,55 @@ Disable Apple Pay
 ~~~~~~~~~~~~~~~~~
 
 To disable Apple Pay with Adyen, simply uninstall the `express_payment_adyen_apple`
+Odoo module.
+
+Google Pay with Adyen
+--------------------
+
+To enable Google Pay with Adyen, you must first complete the prerequisites below.
+After meeting the prerequisites, see the :ref:`Odoo setup steps <adyen-google-steps>`.
+
+Prerequisites
+~~~~~~~~~~~~~
+
+Before enabling Google Pay in Odoo, do the following:
+
+- In Adyen, navigate to :menuselection:`Developers --> API credentials`.
+- Select your Adyen web service account.
+- Scroll down to :guilabel:`Wallet payment methods`.
+- Next to :guilabel:`Google Pay certificate`, click :guilabel:`Add`.
+- Click :guilabel:`Generate certificate` and then :guilabel:`Download certificate`.
+
+This is sufficient for performing test transactions. If you are setting up Google Pay
+for production, complete the following additional prerequisites:
+
+- Register for a `Google Business account <https://www.google.com/business>`_.
+- From your business dashboard, navigate to the :guilabel:`Google Pay API`.
+- Under :guilabel:`Integrate with your website`, click :guilabel:`Add website`.
+- Enter your website URL, select :guilabel:`Gateway` as the integration type, and upload
+  the necessary screenshots.
+- Click :guilabel:`Save` and then submit your integration for approval.
+
+.. _adyen-google-steps:
+
+Steps
+~~~~~
+
+Now, in Odoo:
+
+- :ref:`Configure Adyen <adyen-configuration>`.
+- Install the `express_payment_adyen_google` Odoo module.
+
+This is sufficient for performing test transactions. If you are setting up Google Pay
+for production, complete the following additional steps:
+
+- Open the Odoo configuration page for Adyen.
+- Enter your Google Pay merchant ID in the field :guilabel:`Merchant ID`.
+
+At this point, the Google Pay button will appear in the eCommerce cart.
+
+Disable Google Pay
+~~~~~~~~~~~~~~~~~
+
+To disable Google Pay with Adyen, simply uninstall the `express_payment_adyen_google`
 Odoo module.

@@ -179,8 +179,8 @@ Pay as an express checkout method through Authorize.Net.
 Apple Pay with Authorize.Net
 ----------------------------
 
-To enable Apple Pay with Authorize.Net, you must first complete the prerequisites below. After meeting the prerequisites,
-see the :ref:`Odoo setup steps <authorize-apple-steps>`.
+To enable Apple Pay with Authorize.Net, you must first complete the prerequisites below.
+After meeting the prerequisites, see the :ref:`Odoo setup steps <authorize-apple-steps>`.
 
 Prerequisites
 ~~~~~~~~~~~~~
@@ -209,7 +209,7 @@ Now, in Odoo:
 - Back in your Apple Developer Account, click the :guilabel:`Verify` button on the domain
   verification page.
 
-At this point, the Apple Pay express checkout option will appear in the eCommerce cart.
+At this point, the Apple Pay button will appear in the eCommerce cart.
 
 Disable Apple Pay
 ~~~~~~~~~~~~~~~~~
