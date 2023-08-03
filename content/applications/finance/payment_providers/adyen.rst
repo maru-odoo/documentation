@@ -164,20 +164,20 @@ Then, open your Adyen Merchant Account, go to :menuselection:`Account --> Settin
 .. seealso::
    :doc:`../payment_providers`
 
-Express Checkout with Adyen
-===========================
+Express Checkout
+================
 
 Express checkout allows customers to pay for their products in a single click. Odoo supports Apple
 Pay and Google Pay as express checkout methods through Adyen.
 
-Enable Apple Pay with Adyen
----------------------------
+Apple Pay with Adyen
+--------------------
 
 To enable Apple Pay with Adyen, you must first complete the prerequisites below. After meeting the prerequisites,
-see the section :ref:`steps <adyen-apple-steps>`.
+see the :ref:`Odoo setup steps <adyen-apple-steps>`.
 
 Prerequisites
--------------
+~~~~~~~~~~~~~
 
 .. |payment-processing-csr| replace::
   In a new browser window, log in to Adyen. Then, go to :menuselection:`Developers --> API credentials`,
@@ -191,7 +191,7 @@ Prerequisites
 .. _adyen-apple-steps:
 
 Steps
------
+~~~~~
 
 Now, in Odoo:
 
@@ -207,8 +207,12 @@ Now, in Odoo:
 
 At this point, the Apple Pay express checkout option will appear in the eCommerce cart.
 
-Disable Apple Pay with Adyen
-----------------------------
+.. warning::
+   If you are running Adyen in test mode, you must use `Apple Pay test cards <https://developer.apple.com/apple-pay/sandbox-testing>`_.
+   Adyen will reject Apple Pay payments made from real credit cards when running in test mode.
+
+Disable Apple Pay
+~~~~~~~~~~~~~~~~~
 
 To disable Apple Pay with Adyen, simply uninstall the `express_payment_adyen_apple`
 Odoo module.

@@ -170,20 +170,20 @@ To import the data into Odoo:
 .. tip::
    List of `eCheck.Net return codes <https://support.authorize.net/knowledgebase/Knowledgearticle/?code=000001293>`_
 
-Express Checkout with Authorize.Net
-==========================================
+Express Checkout
+================
 
 Express checkout allows customers to pay for their products in a single click. Odoo supports Apple
 Pay as an express checkout method through Authorize.Net.
 
-Enable Apple Pay with Authorize.Net
------------------------------------
+Apple Pay with Authorize.Net
+----------------------------
 
 To enable Apple Pay with Authorize.Net, you must first complete the prerequisites below. After meeting the prerequisites,
-see the section :ref:`steps <authorize-apple-steps>`.
+see the :ref:`Odoo setup steps <authorize-apple-steps>`.
 
 Prerequisites
--------------
+~~~~~~~~~~~~~
 
 .. |payment-processing-csr| replace::
   In a new browser window, log in to Authorize.Net. Then, go to :menuselection:`Account --> Digital Payment Solutions --> Sign Up`
@@ -195,7 +195,7 @@ Prerequisites
 .. _authorize-apple-steps:
 
 Steps
------
+~~~~~
 
 Now, in Odoo:
 
@@ -211,8 +211,8 @@ Now, in Odoo:
 
 At this point, the Apple Pay express checkout option will appear in the eCommerce cart.
 
-Disable Apple Pay with Authorize.Net
------------------------------------
+Disable Apple Pay
+~~~~~~~~~~~~~~~~~
 
 To disable Apple Pay with Authorize.Net, simply uninstall the `express_payment_authorize_apple`
 Odoo module.

@@ -43,6 +43,9 @@ Before enabling Apple Pay in Odoo, you must register as an Apple Pay merchant. T
 
       If prompted, do not enter a password.
 
+  .. danger::
+    Do **not** share your merchant identity private key :file:`merchant.p12`.
+
 - Upload the merchant identity CSR :file:`CertificateSigningRequest.certSigningRequest` to Apple. Click :guilabel:`Continue`,
   and then click :guilabel:`Download`.
 - Navigate back to the merchant identifier configuration page. Under :guilabel:`Merchant Domains`, click :guilabel:`Add Domain`.
